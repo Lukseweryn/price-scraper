@@ -1,3 +1,8 @@
+# file created by user
+# Ignore all .json/.csv files
+*.json
+*.csv
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
