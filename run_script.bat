@@ -1,13 +1,17 @@
 @echo off
-where python >nul 2>nul
-if errorlevel 1 (
-	echo Python is not installed or not in PATH.
-	pause
-	exit /b 1
-)
 set SCRIPT_DIR=%~dp0
-python "%SCRIPT_DIR%main_script.py"
+set VENV_PYTHON=%SCRIPT_DIR%venv\Scripts\python.exe
+
+if not exist "%VENV_PYTHON%" (
+    echo Virtual environment not found. Run setup first:
+    echo   py -m venv venv
+    echo   venv\Scripts\pip install -r requirements.txt
+    pause
+    exit /b 1
+)
+
+"%VENV_PYTHON%" "%SCRIPT_DIR%main_script.py"
 if errorlevel 1 (
-	echo The Python script failed.
-	pause
+    echo The Python script failed.
+    pause
 )

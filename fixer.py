@@ -2,9 +2,9 @@ import json
 import os
 
 
-def create_shop_class(__file__):
+def create_shop_class(caller_path):
     """Create a JSON file with default shop class information."""
-    shop_class_file = os.path.join(os.path.dirname(__file__), "shop_class.json")
+    shop_class_file = os.path.join(os.path.dirname(caller_path), "shop_class.json")
     default_shop_class_dict = {
         'crop': ['priceview__FinalPriceWrapper-sc-1d2v9as-0'],
         'medicine': [
@@ -22,9 +22,9 @@ def create_shop_class(__file__):
     except Exception as e:
         print(f"Error creating shop_class.json: {e}")
 
-def create_shop_information(__file__):
+def create_shop_information(caller_path):
     """Create a JSON file with default shop information."""
-    shop_info_file = os.path.join(os.path.dirname(__file__), "shop_information.json")
+    shop_info_file = os.path.join(os.path.dirname(caller_path), "shop_information.json")
     default_shops_information = [
     {
         'url': 'https://www.cropp.com/pl/pl/bezowe-spodnie-z-lnem-500de-08x?algolia_query_id=df76b8e4a6111ebf47ca401534da8834',
@@ -49,9 +49,9 @@ def create_shop_information(__file__):
     except Exception as e:
         print(f"Error creating shop_information.json: {e}")
 
-def create_results_file(__file__):
+def create_results_file(caller_path):
     """Create a CSV file where results will be stored."""
-    shop_results_file = os.path.join(os.path.dirname(__file__), "results.csv")
+    shop_results_file = os.path.join(os.path.dirname(caller_path), "results.csv")
     try:
         with open(shop_results_file, 'w', encoding='utf-8') as f:
             f.write("SKLEP,PRODUKT,CENA,DATA\n")  # Write header line

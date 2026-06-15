@@ -63,7 +63,7 @@ class ShopScraper:
                        for text in cookie_button_texts):
                     accept_cookies_button = button
                     break
-        except:
+        except Exception:
             pass
 
         if accept_cookies_button:
@@ -96,4 +96,5 @@ class ShopScraper:
                 continue
         if price is None:
             print('Price element not found with any of the specified class names.')
+            self.driver.quit()
         return price
