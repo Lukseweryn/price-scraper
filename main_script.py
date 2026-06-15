@@ -41,7 +41,7 @@ if __name__ == '__main__':
             else:
                 print(f"Warning: price is invalid for {shop['product_name']} from {shop['shop_name']}: {price}")
                 formatted_price = ""
-            data = file_manager.merge_data(data, formatted_price, shop['product_name'], shop['shop_name'])
+            file_manager.merge_data(data, formatted_price, shop['product_name'], shop['shop_name'])
         except Exception as e:
             print(f"Error processing {shop['product_name']} from {shop['shop_name']}: {e}")
 

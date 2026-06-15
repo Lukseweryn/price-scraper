@@ -32,8 +32,7 @@ class FileManager:
             writer.writerows(rows)
 
     def merge_data(self, loaded_data, price='', product_name='', shop_name=''):
-        """Extend loaded data by adding today's date and the given price.
-        For other fields, append an empty string."""
+        """Append a new row to loaded_data in place."""
         today = datetime.date.today().isoformat()
         for key in loaded_data:
             if key == "DATA":
@@ -46,4 +45,3 @@ class FileManager:
                 loaded_data[key].append(shop_name)
             else:
                 loaded_data[key].append("")
-        return loaded_data
