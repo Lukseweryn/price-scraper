@@ -1,7 +1,9 @@
 import csv
-from collections import defaultdict
 import ctypes
-import os
+import logging
+from collections import defaultdict
+
+logger = logging.getLogger(__name__)
 
 def check_price(csv_file):
     product_prices = defaultdict(list)
@@ -22,10 +24,11 @@ def check_price(csv_file):
         if len(prices) >= 2:
             last_price = prices[-1]
             prev_price = prices[-2]
-            print(f"{product}: Last price = {last_price}, Previous price = {prev_price}, Change = {last_price - prev_price}")
+            logger.info("%s: last=%.2f, previous=%.2f, change=%.2f",
+                        product, last_price, prev_price, last_price - prev_price)
             if last_price != prev_price:
                 shop = product_shop.get(product, 'Unknown shop')
                 message = f"Product: {product}\nShop: {shop}\nPrice changed from {prev_price} to {last_price}"
                 ctypes.windll.user32.MessageBoxW(0, message, "Price Alert", 1)
         else:
-            print(f"{product}: Not enough data to compare prices.")
+            logger.info("%s: not enough data to compare prices yet.", product)
